@@ -1,0 +1,54 @@
+#include <stdio.h> 
+#include <string.h>
+
+#define MAX_TASKS 20
+#define MAX_LEN 100
+
+int main() {
+    char tasks[MAX_TASKS][MAX_LEN];
+    int count = 0;
+    int choice;
+
+    do {
+        printf("\n--- Simple Planner ---\n");
+        printf("\n  1. Add Task"); 
+        printf("\n  2. View Task");
+        printf("\n  3. Exit Planner  \n");
+        scanf("%d", &choice);
+        getchar();
+        
+        switch(choice){
+            case 1:
+                if (count < MAX_TASKS) {
+                    printf("Enter task:");
+                    fgets(tasks[count], MAX_LEN, stdin);
+                    tasks[count][strcspn(tasks[count], "\n")] = 0;
+                    count++;
+                    printf("Task Added! \n");
+                } else {
+                    printf("Planner is full\n");
+                }
+                break;
+                
+            case 2: 
+                printf("\n--- Your Task ---\n");
+                if (count == 0) {
+                    printf("No Task yet. \n");
+                } else {
+                    for (int i = 0; i < count; i++) {
+                        printf("%d. %s\n", i+1, tasks[i]); 
+                    }
+                }
+                break;
+            
+            case 3:
+                printf("Goodbye!\n");
+                break;
+                
+            default:
+                    printf("Invalid Choice. Try aagain \n");
+            
+        }
+    } while(choice != 3);
+    return 0;
+}
