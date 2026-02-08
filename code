@@ -14,6 +14,7 @@ int main() {
         printf("\n  1. Add Task"); 
         printf("\n  2. View Task");
         printf("\n  3. Exit Planner  \n");
+        printf("\n  0. Open dev tool \n");
         scanf("%d", &choice);
         getchar();
         
@@ -40,7 +41,20 @@ int main() {
                     }
                 }
                 break;
-            
+            case 0: { 
+                int devChoice; 
+                printf("\nEnter 1 to enable Developer Mode, 0 to disable: "); 
+                scanf("%d", &devChoice); 
+                    
+                if (devChoice == 1) { 
+                    printf("\n[Developer Mode] Enabled!\n"); 
+                    printf("You now have access to advanced tools.\n"); 
+                } else {
+                    printf("\n[Developer Mode] Disabled.\n"); 
+                    printf("Running in normal user mode.\n"); 
+                } 
+                break; 
+            }
             case 3:
                 printf("Goodbye!\n");
                 break;
